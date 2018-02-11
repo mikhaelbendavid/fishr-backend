@@ -6,11 +6,11 @@ module.exports = (sequelize, DataTypes) => {
     seller: DataTypes.BOOLEAN
   });
 
-  User.associate = (models) => {
-    User.hasMany(models.Transaction, {
-      foreignKey: 'userId',
-      as: 'transactions'
-    })
-  }
+  // User.associate = (models) => {
+  //   User.hasMany(models.Transaction, {
+  //     foreignKey: 'userId',
+  //     as: 'transactions'
+  //   })
+  // }
   return User;
   };

@@ -1,5 +1,7 @@
 const User = require('../models').User;
 const Transaction = require('../models').Transaction;
+const Species = require('../models').Species;
+const Port = require('../models').Port;
 
 module.exports = {
   list(req, res) {
