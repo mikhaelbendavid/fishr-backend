@@ -9,16 +9,34 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       sellerId: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id',
+          as: 'sellerId'
+        }
       },
       buyerId: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id',
+          as: 'buyerId'
+        }
       },
       fishId: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Species',
+          key: 'id',
+        }
       },
       portId: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Ports',
+          key: 'id',
+        }
       },
       price: {
         type: Sequelize.STRING
