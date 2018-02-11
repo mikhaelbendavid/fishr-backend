@@ -17,13 +17,8 @@ module.exports = (sequelize, DataTypes) => {
         as: 'buyerId'
     },
   },
-    fishId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Species',
-        key: 'id',
-        as: 'fishId'
-    },
+    fish: {
+      type: DataTypes.STRING
   },
     portId: {
       type: DataTypes.INTEGER,
@@ -39,6 +34,11 @@ module.exports = (sequelize, DataTypes) => {
   })
 
   Transaction.associate = (models) => {
+
+    Transaction.belongsTo(models.Port, {
+      foreignKey: 'portId',
+      as: 'portInfo'
+    })
     Transaction.belongsTo(models.User, {
       foreignKey: 'sellerId',
       as: 'sellerInfo'

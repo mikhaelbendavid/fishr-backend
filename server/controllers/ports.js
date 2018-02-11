@@ -19,6 +19,17 @@ module.exports = {
       longitudeDelta: req.body.longitudeDelta
     })
     .then((port) => res.status(200).send(port))
-    .catch((error) => res.status(400).send(user))
+    .catch((error) => res.status(400).send(error))
   },
+  retrieve(req, res) {
+    return Port
+    .findById(req.params.id, {
+      include: [{
+        model: Transaction,
+        as: 'transactionInfo'
+      }]
+    })
+    .then((port) => res.status(200).send(port))
+    .catch((error) => res.status(400).send(error))
+  }
 };
