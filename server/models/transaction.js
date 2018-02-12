@@ -17,8 +17,14 @@ module.exports = (sequelize, DataTypes) => {
         as: 'buyerId'
     },
   },
-    fish: {
-      type: DataTypes.STRING
+
+  speciesId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'Species',
+      key: 'id',
+      as: 'buyerId'
+    },
   },
     portId: {
       type: DataTypes.INTEGER,

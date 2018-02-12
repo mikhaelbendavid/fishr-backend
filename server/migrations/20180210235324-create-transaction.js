@@ -24,8 +24,13 @@ module.exports = {
           as: 'buyerId'
         }
       },
-      fish: {
-        type: Sequelize.STRING,
+      speciesId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Species',
+          key: 'id',
+          as: 'speciesId'
+        },
       },
       portId: {
         type: Sequelize.INTEGER,

@@ -19,14 +19,26 @@ module.exports = {
         {
         model: Port,
         as: 'portInfo'
-      },
-      {
-        model: Species,
-        as: 'speciesInfo'
       }
     ]
     })
     .then((transactions) => res.status(200).send(transactions))
+    .catch((error) => res.status(400).send(error))
+  },
+  listByFish(req, res) {
+    return Transaction
+    .findAll({
+      where: {
+        speciesId: req.params.speciesId
+      },
+      include: [
+        {
+          model: Port,
+          as: 'portInfo'
+        }
+      ]
+    })
+    then((transactions) => res.status(200).send(transactions))
     .catch((error) => res.status(400).send(error))
   },
   create(req, res) {
@@ -34,7 +46,7 @@ module.exports = {
     .create({
       sellerId: req.body.sellerId,
       buyerId: req.body.buyerId,
-      fish: req.body.fish,
+      speciesId: req.body.fishId,
       portId: req.body.portId,
       price: req.body.price,
       weight: req.body.weight,
